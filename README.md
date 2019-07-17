@@ -96,7 +96,7 @@ Service Worker 运行在 worker 上下文，两者的区别：
 
 1. 创建 Service Worker：Registration(注册) -> Installation(安装) -> Activation(激活)；此后会在浏览器中注册，此时可以在控制台 Application 中查看 Service Worker 的生命，它的生命周期随浏览器共存；
 2. Service Worker 接管主线层请求，当请求的资源属于资源列表中的内容时，缓存到 Cache Storage；由于 Html 文件也可缓存，所以可以离线访问站点；
-3. 当用户二度访问站点时，使用离线资源以打到秒开；并且 Service Worker 会在后台主动请求更新资源，以便下次访问时，用户使用新的资源版本；
+3. 当用户二度访问站点时(同源的所有标签都关闭之后，再次打开)，使用离线资源以打到秒开；并且 Service Worker 会在后台主动请求更新资源，以便下次访问时，用户使用新的资源版本；
 4. 每 24 小时，Service Worker 会在后台主动请求更新资源；
 5. 当异常状况发生时，主动注销 Service Worker（需要服务端配合）
 
