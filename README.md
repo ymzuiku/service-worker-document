@@ -81,20 +81,22 @@ importScripts('....');
 
 Service Worker 运行在 worker 上下文，两者的区别：
 
-| 行为         | Web Worker     | Service Worker    |
-| ------------ | -------------- | ----------------- |
-| 关闭当前标签 | 关闭进程       | 保留进程          |
-| 代理请求     | 无法拦截和代理 | 可以代理请求      |
-| 安全要求     | 无             | 必须由 HTTPS 承载 |
+| 行为              | Web Worker     | Service Worker    |
+| ----------------- | -------------- | ----------------- |
+| 关闭当前标签      | 关闭进程       | 保留进程          |
+| 代理请求          | 无法拦截和代理 | 可以代理请求      |
+| Application Cache | 无             | 可以管理          |
+| 消息推送          | 无             | 可以接收消息      |
+| 安全要求          | 无             | 必须由 HTTPS 承载 |
 
 ### Service Worker 运行步骤：
 
 我们看看 Service Worker 是如何让用户做到秒开的：
 
-1. 注册 Service Worker：下载 -> 安装 -> 激活；此后会在浏览器中注册，此时可以在控制台 Application 中查看 Service Worker 的生命，它的生命周期随浏览器共存；
-2. Service Worker 接管主线层请求，当请求的资源属于资源列表中的内容时，缓存到本地，包括 Html 文件；由于 Html 文件也被缓存了，所以可以离线访问站点；
-3. 当用户二度访问站点时，使用本地的资源以打到秒开；并且 Service Worker 会在后台主动请求更新资源，以便下次访问时，用户使用新的资源版本；
-4. 每 24 小时， Service Worker 会在后台主动请求更新资源；
+1. 创建 Service Worker：Registration(注册) -> Installation(安装) -> Activation(激活)；此后会在浏览器中注册，此时可以在控制台 Application 中查看 Service Worker 的生命，它的生命周期随浏览器共存；
+2. Service Worker 接管主线层请求，当请求的资源属于资源列表中的内容时，缓存到 Application Cache；由于 Html 文件也可缓存，所以可以离线访问站点；
+3. 当用户二度访问站点时，使用离线资源以打到秒开；并且 Service Worker 会在后台主动请求更新资源，以便下次访问时，用户使用新的资源版本；
+4. 每 24 小时，Service Worker 会在后台主动请求更新资源；
 5. 当异常状况发生时，主动注销 Service Worker（需要服务端配合）
 
 最终确保用户每次访问的都是本地离线资源
@@ -106,7 +108,7 @@ index.html
 ```html
 <script>
   window.addEventListener('load', function() {
-    // 下载 service-worker.js
+    // 注册 service-worker.js
     navigator.serviceWorker.register('./service-worker.js', { scope: './' }).then((registration) => {
       // 安装
       if (registration.installing) {
@@ -160,8 +162,6 @@ serviceWorker.register({
 我们修改一下代码，看看它的更新机制
 
 ### 使用 Service Worker 条件
-
-虽然 Service Worker
 
 1. 在微信浏览器中 serviceWorker 找不到；
 2. ios 11.3 之后才支持 serviceWorker；
