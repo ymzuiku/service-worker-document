@@ -81,25 +81,30 @@ importScripts('....');
 
 Service Worker 运行在 worker 上下文，两者的区别：
 
-| 行为              | Web Worker     | Service Worker    |
-| ----------------- | -------------- | ----------------- |
-| 关闭当前标签      | 关闭进程       | 保留进程          |
-| 代理请求          | 无法拦截和代理 | 可以代理请求      |
-| Application Cache | 无             | 可以管理          |
-| 消息推送          | 无             | 可以接收消息      |
-| 安全要求          | 无             | 必须由 HTTPS 承载 |
+| 行为            | Web Worker     | Service Worker    |
+| --------------- | -------------- | ----------------- |
+| 关闭当前标签    | 关闭进程       | 保留进程          |
+| 代理请求        | 无法拦截和代理 | 可以代理请求      |
+| Cache Storage   | 无             | 可以管理          |
+| backgroud push  | 无             | 可以接收消息      |
+| background sync | 无             | 可以在后台同步    |
+| 安全要求        | 无             | 必须由 HTTPS 承载 |
 
 ### Service Worker 运行步骤：
 
 我们看看 Service Worker 是如何让用户做到秒开的：
 
 1. 创建 Service Worker：Registration(注册) -> Installation(安装) -> Activation(激活)；此后会在浏览器中注册，此时可以在控制台 Application 中查看 Service Worker 的生命，它的生命周期随浏览器共存；
-2. Service Worker 接管主线层请求，当请求的资源属于资源列表中的内容时，缓存到 Application Cache；由于 Html 文件也可缓存，所以可以离线访问站点；
+2. Service Worker 接管主线层请求，当请求的资源属于资源列表中的内容时，缓存到 Cache Storage；由于 Html 文件也可缓存，所以可以离线访问站点；
 3. 当用户二度访问站点时，使用离线资源以打到秒开；并且 Service Worker 会在后台主动请求更新资源，以便下次访问时，用户使用新的资源版本；
 4. 每 24 小时，Service Worker 会在后台主动请求更新资源；
 5. 当异常状况发生时，主动注销 Service Worker（需要服务端配合）
 
 最终确保用户每次访问的都是本地离线资源
+
+![我们可以在开发者工具的 Service Worker 选项中查看已注册的服务](imgs/chrome-sw.png)
+
+![我们可以在 Cache Storage 中查看缓存的内容](imgs/cache.png)
 
 ### 注册 Service Worker 示例
 
