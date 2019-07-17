@@ -2,9 +2,6 @@
 
 Service Worker 简明分享
 
-> (mozilla.org)[https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API/Using_Service_Workers] 官方解释：
-> Service workers 本质上充当 Web 应用程序与浏览器之间的代理服务器，也可以在网络可用时作为浏览器和网络间的代理。它们旨在（除其他之外）使得能够创建有效的离线体验，拦截网络请求并基于网络是否可用以及更新的资源是否驻留在服务器上来采取适当的动作。他们还允许访问推送通知和后台同步 API。
-
 ## Service Worker 和 PWA 的关系
 
 Service Worker 是浏览器的一个功能，PWA 是一个理念或标准，用来规范离线 Web 的行为。
@@ -78,6 +75,9 @@ importScripts('....');
 我们已经知道 Web Worker 是什么，现在再来描述一下 Service Worker
 
 ## Service Worker
+
+> (mozilla.org)[https://developer.mozilla.org/zh-CN/docs/Web/API/Service_Worker_API/Using_Service_Workers] 官方解释：
+> Service workers 本质上充当 Web 应用程序与浏览器之间的代理服务器，也可以在网络可用时作为浏览器和网络间的代理。它们旨在（除其他之外）使得能够创建有效的离线体验，拦截网络请求并基于网络是否可用以及更新的资源是否驻留在服务器上来采取适当的动作。他们还允许访问推送通知和后台同步 API。
 
 Service Worker 运行在 worker 上下文，两者的区别：
 
