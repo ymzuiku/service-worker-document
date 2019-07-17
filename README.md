@@ -102,9 +102,11 @@ Service Worker 运行在 worker 上下文，两者的区别：
 
 最终确保用户每次访问的都是本地离线资源
 
-![我们可以在开发者工具的 Service Worker 选项中查看已注册的服务](imgs/chrome-sw.png)
+如图，我们可以在开发者工具的 Service Worker 选项中查看已注册的服务:
+![](imgs/chrome-sw.png)
 
-![我们可以在 Cache Storage 中查看缓存的内容](imgs/cache.png)
+如图，我们可以在 Cache Storage 中查看缓存的内容:
+![](imgs/cache.png)
 
 ### 注册 Service Worker 示例
 
