@@ -157,7 +157,7 @@ serviceWorker.register({
 
 这有一个开启了 Service Worker 的例子：[https://hr.workos.top](https://hr.workos.top)
 
-我们修改一下代码，看看它的更新机制
+> 我们此时修改一下此文档代码，看看 Service Worker 的更新机制
 
 ## 使用 Service Worker 条件
 
