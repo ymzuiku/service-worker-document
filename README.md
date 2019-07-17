@@ -159,9 +159,11 @@ serviceWorker.register({
 
 我们修改一下代码，看看它的更新机制
 
-### 使用 Service Worker 条件
+## 使用 Service Worker 条件
 
 1. 在微信浏览器中 serviceWorker 找不到；
 2. ios 11.3 之后才支持 serviceWorker；
 3. 如果用户在产品发版之后，并且 Service Worker 未主动获取新版本的时段访问站点，用户会使用历史版本，此时需要和确保后端接口兼容历史版本；
 4. 要做一些异常情况的应急处理，如如果访问某个检测接口，根据检测接口在离线资源中主动注销 Service Worker
+
+## Thanks
