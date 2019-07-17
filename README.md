@@ -131,7 +131,7 @@ self.addEventListener('fetch', function(event) {
 });
 ```
 
-实际上，我们不需要去实现以上代码，因为这个行为在绝大部分我们使用 create-react-app 脚手架时，它为我们处理了更多的事情：
+实际上，我们不需要去实现以上代码，大部分 PWA 项目使用了 GoogleChrome 团队编写的 workbox 去管理资源的请求拦截及缓存，create-react-app 创建的项目中已经内置了以下内容：
 
 - 创建了 `serviceWorker.js` 文件，用于在主线程注册 Service Worker
 - 在 Webpack 中使用了 WorkboxWebpackPlugin 插件，该插件帮我们处理了以下行为：
