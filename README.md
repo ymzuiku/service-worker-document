@@ -177,7 +177,8 @@ if (navigator && navigator.serviceWorker) {
 
 这有一个开启了 Service Worker 的例子：[https://hr.workos.top](https://hr.workos.top)
 
-> 我们此时修改一下此文档代码，看看 Service Worker 的更新机制
+1. 我们访问成功之后，关闭网络连接，看看离线访问的状态
+2. 我们此时修改一下此文档代码并部署，看看 Service Worker 的更新机制
 
 ## 使用 Service Worker 条件
 
