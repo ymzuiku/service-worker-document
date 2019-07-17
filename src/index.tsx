@@ -10,6 +10,18 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+
+if (navigator && navigator.serviceWorker) {
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for (const registration of registrations) {
+      registration.unregister();
+      const update = document.createElement('div');
+      update.innerText = '已发现注册中的 service-worker，并且卸载';
+      document.body.appendChild(update);
+    }
+  });
+}
+
 serviceWorker.register({
   onSuccess: () => {
     const update = document.createElement('div');
@@ -18,7 +30,18 @@ serviceWorker.register({
   },
   onUpdate: () => {
     const update = document.createElement('div');
-    update.innerText = '已由 service-worker 更新完毕资源';
+
+    const p = document.createElement('p');
+    p.innerText = '有新的资源，并且更新完毕';
+    update.appendChild(p);
+
+    const button = document.createElement('button');
+    button.innerText = '点击更新';
+    button.onclick = () => {
+      window.location.reload();
+    };
+    update.appendChild(button);
+
     document.body.appendChild(update);
   },
 });

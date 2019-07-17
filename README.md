@@ -160,6 +160,19 @@ serviceWorker.register({
 });
 ```
 
+对 Service-Worker 管理不善或一旦你的静态资源文件出现问题，会对于线上业务造成毁灭打击，所以上线 Service-Worker 一定要做好强制更新的机制, 最基本的是确保历史的 serviceWorker 本身可以被卸载：
+
+```js
+// 每次都卸载之前的 serviceWorker
+if (navigator && navigator.serviceWorker) {
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for (let registration of registrations) {
+      registration.unregister();
+    }
+  });
+}
+```
+
 ### 演示 Service Worker 更新及离线
 
 这有一个开启了 Service Worker 的例子：[https://hr.workos.top](https://hr.workos.top)
