@@ -155,9 +155,7 @@ serviceWorker.register({
 
 ### 演示 Service Worker 更新及离线
 
-这有一个开启了 Service Worker 的例子：
-
-[https://hr.workos.top](https://hr.workos.top)
+这有一个开启了 Service Worker 的例子：[https://hr.workos.top](https://hr.workos.top)
 
 我们修改一下代码，看看它的更新机制
 
