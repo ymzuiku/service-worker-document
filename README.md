@@ -98,7 +98,7 @@ Service Worker 运行在 worker 上下文，两者的区别：
 2. Service Worker 接管主线层请求，当请求的资源属于资源列表中的内容时，缓存到 Cache Storage；由于 Html 文件也可缓存，所以可以离线访问站点；
 3. 当用户二度访问站点时(同源的所有标签都关闭之后，再次打开)，使用离线资源以打到秒开；并且 Service Worker 会在后台主动请求更新资源，以便下次访问时，用户使用新的资源版本；
 4. 每 24 小时，Service Worker 会在后台主动请求更新资源；
-5. 当异常状况发生时，主动注销 Service Worker（需要服务端配合）
+5. 当异常状况发生时，主动注销 Service Worker
 
 最终确保用户每次访问的都是本地离线资源
 
@@ -185,6 +185,6 @@ if (navigator && navigator.serviceWorker) {
 2. 在微信浏览器中 serviceWorker 找不到；
 3. ios 11.3 之后才支持 serviceWorker；
 4. 如果用户在产品发版之后，并且 Service Worker 未主动获取新版本的时段访问站点，用户会使用历史版本，此时需要和确保后端接口兼容历史版本；
-5. 要做一些异常情况的应急处理，如如果访问某个检测接口，根据检测接口在离线资源中主动注销 Service Worker
+5. 要做一些异常情况的应急处理，如主动注销 Service Worker
 
 ## Thanks
