@@ -1,6 +1,6 @@
-import { coverAttribute } from 'cssin'
-import  'cssin/commonSheets'
-import  'cssin/commonValues'
+import { coverAttribute } from 'cssin';
+import 'cssin/commonSheets';
+import 'cssin/commonValues';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -15,12 +15,22 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 
+// if (navigator && navigator.serviceWorker) {
+//   navigator.serviceWorker.getRegistrations().then(function(registrations) {
+//     for (const registration of registrations) {
+//       registration.unregister();
+//       const update = document.createElement('div');
+//       update.innerText = '已发现注册中的 service-worker，并且卸载';
+//       document.body.appendChild(update);
+//     }
+//   });
+// }
+
 if (navigator && navigator.serviceWorker) {
   navigator.serviceWorker.getRegistrations().then(function(registrations) {
     for (const registration of registrations) {
-      registration.unregister();
       const update = document.createElement('div');
-      update.innerText = '已发现注册中的 service-worker，并且卸载';
+      update.innerText = '已发现注册中的 service-worker';
       document.body.appendChild(update);
     }
   });
